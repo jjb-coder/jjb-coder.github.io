@@ -1,0 +1,346 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"><title>解析库-lxml | 酒中仙</title><meta name="description" content="解析库-lxml"><meta name="author" content="G-G-Bond"><meta name="copyright" content="G-G-Bond"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/jjb-coder.github.io/img/favicon.ico"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="解析库-lxml"><meta name="twitter:description" content="解析库-lxml"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/default.png"><meta property="og:type" content="article"><meta property="og:title" content="解析库-lxml"><meta property="og:url" content="https://jjb-coder.club/2020/03/22/%E8%A7%A3%E6%9E%90%E5%BA%93-lxml/"><meta property="og:site_name" content="酒中仙"><meta property="og:description" content="解析库-lxml"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/default.png"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = 'false'
+var t = Cookies.get("theme");
+if (autoChangeMode == '1'){
+const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+if (t === undefined){
+  if (isLightMode) activateLightMode()
+  else if (isDarkMode) activateDarkMode()
+  else if (isNotSpecified || hasNoSupport){
+    console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+    now = new Date();
+    hour = now.getHours();
+    isNight = hour < 6 || hour >= 18
+    isNight ? activateDarkMode() : activateLightMode()
+}
+} else if (t == 'light') activateLightMode()
+else activateDarkMode()
+
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/jjb-coder.github.io/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="https://jjb-coder.club/2020/03/22/%E8%A7%A3%E6%9E%90%E5%BA%93-lxml/"><link rel="next" title="列表" href="https://jjb-coder.club/2020/03/12/%E5%88%97%E8%A1%A8/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/jjb-coder.github.io/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://jjb-coder.github.io/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  bookmark: {
+    title: 'Snackbar.bookmark.title',
+    message_prev: 'Press',
+    message_next: 'to bookmark this page'
+  },
+  runtime_unit: 'days',
+  runtime: false,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  isHome: false,
+  isPost: true
+  
+}</script><meta name="generator" content="Hexo 4.2.0"></head><body><header> <div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/jjb-coder.github.io/">酒中仙</a></span><span class="toggle-menu pull_right close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/jjb-coder.github.io/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/jjb-coder.github.io/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/jjb-coder.github.io/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/jjb-coder.github.io/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/jjb-coder.github.io/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 闲暇</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/jjb-coder.github.io/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/jjb-coder.github.io/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/jjb-coder.github.io/books/"><i class="fa-fw fa fa-book"></i><span> 阅读</span></a></li><li><a class="site-page" href="/jjb-coder.github.io/photos/"><i class="fa-fw fa fa-photo"></i><span> 图片</span></a></li></ul></div></div></span></div></header><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/jjb-coder.github.io/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/jjb-coder.github.io/archives/"><div class="headline">Articles</div><div class="length_num">9</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/jjb-coder.github.io/categories/"><div class="headline">Categories</div><div class="length_num">3</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/jjb-coder.github.io/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/jjb-coder.github.io/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/jjb-coder.github.io/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/jjb-coder.github.io/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/jjb-coder.github.io/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 闲暇</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/jjb-coder.github.io/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/jjb-coder.github.io/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/jjb-coder.github.io/books/"><i class="fa-fw fa fa-book"></i><span> 阅读</span></a></li><li><a class="site-page" href="/jjb-coder.github.io/photos/"><i class="fa-fw fa fa-photo"></i><span> 图片</span></a></li></ul></div></div></div><div id="mobile-sidebar-toc"><div class="toc_mobile_headline">Catalog</div><div class="sidebar-toc__content"><ol class="toc_mobile_items"><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#简介"><span class="toc_mobile_items-number">1.</span> <span class="toc_mobile_items-text">简介</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#使用规则"><span class="toc_mobile_items-number">2.</span> <span class="toc_mobile_items-text">使用规则</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#使用实例"><span class="toc_mobile_items-number">3.</span> <span class="toc_mobile_items-text">使用实例</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#查找所有节点"><span class="toc_mobile_items-number">3.1.</span> <span class="toc_mobile_items-text">查找所有节点</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#查找子节点"><span class="toc_mobile_items-number">3.2.</span> <span class="toc_mobile_items-text">查找子节点</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#查找父节点"><span class="toc_mobile_items-number">3.3.</span> <span class="toc_mobile_items-text">查找父节点</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#属性匹配"><span class="toc_mobile_items-number">3.4.</span> <span class="toc_mobile_items-text">属性匹配</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#文本获取"><span class="toc_mobile_items-number">3.5.</span> <span class="toc_mobile_items-text">文本获取</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#属性获取"><span class="toc_mobile_items-number">3.6.</span> <span class="toc_mobile_items-text">属性获取</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#一个属性包含多个值的匹配"><span class="toc_mobile_items-number">3.7.</span> <span class="toc_mobile_items-text">一个属性包含多个值的匹配</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#多个属性匹配一个值"><span class="toc_mobile_items-number">3.8.</span> <span class="toc_mobile_items-text">多个属性匹配一个值</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#按顺序选择节点"><span class="toc_mobile_items-number">3.9.</span> <span class="toc_mobile_items-text">按顺序选择节点</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#节点轴选择"><span class="toc_mobile_items-number">3.10.</span> <span class="toc_mobile_items-text">节点轴选择</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true">     </i><div class="auto_open" id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用规则"><span class="toc-number">2.</span> <span class="toc-text">使用规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用实例"><span class="toc-number">3.</span> <span class="toc-text">使用实例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查找所有节点"><span class="toc-number">3.1.</span> <span class="toc-text">查找所有节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查找子节点"><span class="toc-number">3.2.</span> <span class="toc-text">查找子节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查找父节点"><span class="toc-number">3.3.</span> <span class="toc-text">查找父节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#属性匹配"><span class="toc-number">3.4.</span> <span class="toc-text">属性匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文本获取"><span class="toc-number">3.5.</span> <span class="toc-text">文本获取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#属性获取"><span class="toc-number">3.6.</span> <span class="toc-text">属性获取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一个属性包含多个值的匹配"><span class="toc-number">3.7.</span> <span class="toc-text">一个属性包含多个值的匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多个属性匹配一个值"><span class="toc-number">3.8.</span> <span class="toc-text">多个属性匹配一个值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#按顺序选择节点"><span class="toc-number">3.9.</span> <span class="toc-text">按顺序选择节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#节点轴选择"><span class="toc-number">3.10.</span> <span class="toc-text">节点轴选择</span></a></li></ol></li></ol></div></div></div><main id="content-outer"><div id="top-container" style="background-image: url(https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/default.png)"><div id="post-info"><div id="post-title"><div class="posttitle">解析库-lxml</div></div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> Created 2020-03-22<span class="post-meta__separator">|</span><i class="fa fa-history fa-fw" aria-hidden="true"></i> Updated 2020-03-22</time><span class="post-meta__separator">|</span><span><i class="fa fa-inbox post-meta__icon fa-fw" aria-hidden="true"></i><a class="post-meta__categories" href="/jjb-coder.github.io/categories/python/">python</a><i class="fa fa-angle-right fa-fw" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon fa-fw" aria-hidden="true"></i><a class="post-meta__categories" href="/jjb-coder.github.io/categories/python/python%E7%88%AC%E8%99%AB/">python爬虫</a></span><div class="post-meta-wordcount"><div class="post-meta-pv-cv"><span><i class="fa fa-eye post-meta__icon fa-fw" aria-hidden="true"> </i>Post View:</span><span id="busuanzi_value_page_pv"></span></div></div></div></div></div><div class="layout layout_post" id="content-inner">   <article id="post"><div class="article-container" id="post-content"><html><head></head><body><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>lxml 是 Python 的一个解析库，支持HTML和XML的解析,支持XPath解析方式，解析效率很高。</p>
+<h2 id="使用规则"><a href="#使用规则" class="headerlink" title="使用规则"></a>使用规则</h2><p>XPath，全称XML Path Language，即XML路径语言，它是一门在XML文档中查找信息的语言，它最初是用来搜寻XML文档的，但是它同样适用于HTML文档的搜索</p>
+<p><strong>xpath常用规则:</strong> </p>
+<table>
+<thead>
+<tr>
+<th align="center">表达式</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">nodename</td>
+<td align="center">选取此节点的所有子节点</td>
+</tr>
+<tr>
+<td align="center">/</td>
+<td align="center">从当前节点选取直接子节点</td>
+</tr>
+<tr>
+<td align="center">//</td>
+<td align="center">从当前节点选取子孙节点</td>
+</tr>
+<tr>
+<td align="center">.</td>
+<td align="center">选取当前节点</td>
+</tr>
+<tr>
+<td align="center">..</td>
+<td align="center">选取当前节点的父节点</td>
+</tr>
+<tr>
+<td align="center">@</td>
+<td align="center">选取属性</td>
+</tr>
+<tr>
+<td align="center">*</td>
+<td align="center">通配符，选择所有元素节点与元素名</td>
+</tr>
+<tr>
+<td align="center">@*</td>
+<td align="center">选取所有属性</td>
+</tr>
+<tr>
+<td align="center">[@attrib]</td>
+<td align="center">选取具有给定属性的所有元素</td>
+</tr>
+<tr>
+<td align="center">[@attrib=’value’]</td>
+<td align="center">选取给定属性具有给定值的所有元素</td>
+</tr>
+<tr>
+<td align="center">[tag]</td>
+<td align="center">选取所有具有指定元素的直接子节点</td>
+</tr>
+<tr>
+<td align="center">[tag=’text’]</td>
+<td align="center">选取所有具有指定元素并且文本内容是text节点</td>
+</tr>
+</tbody></table>
+<p>XPath 基本使用方法：首先使用代码 from lxml import etree导入库，然后将 HTML 文档变成一个对象，再调用对象的方法去查找指定的节点，方法有两种：tree = etree.parse() 为本地文件查找，tree = etree.HTML() 为网络文件查找，再使用语句 tree.xpath() 查找指定节点。</p>
+<h2 id="使用实例"><a href="#使用实例" class="headerlink" title="使用实例"></a>使用实例</h2><p>现在以百度主页面为例，进行下面知识的学习          </p>
+<h3 id="查找所有节点"><a href="#查找所有节点" class="headerlink" title="查找所有节点"></a>查找所有节点</h3><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from lxml import etree</span><br><span class="line">url='https://www.baidu.com'</span><br><span class="line">response=requests.get(url)</span><br><span class="line">response.encoding='utf-8'</span><br><span class="line">selector=etree.HTML(response.text)</span><br><span class="line">result=selector.xpath("//*")</span><br><span class="line">print(result)</span><br></pre></td></tr></tbody></table></figure></div>
+<p>使用 * 代表匹配所有节点，整个 xpath.html 文件中的所有节点都会被获取到，返回形式是一个列表，每个元素是 Element 类型，其后跟了节点的名称，如 html、body、div、ul、li等，所有节点都包含在列表中,输出形式如下(输出过长，省略了一部分)：</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<element html at 0x28feac7cf48>, <element head at 0x28feb2884c8>, <element meta at 0x28feb288108>, <element meta at 0x28feb26dcc8>, <element meta at 0x28feb26dc88>, <element link at 0x28feb26dbc8>]</element></element></element></element></element></element></span><br></pre></td></tr></tbody></table></figure></div>
+<h3 id="查找子节点"><a href="#查找子节点" class="headerlink" title="查找子节点"></a>查找子节点</h3><p>通过 / 或 // 即可查找元素的<strong>子节点</strong>或<strong>子孙节点</strong>：</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from lxml import etree</span><br><span class="line">url='https://www.baidu.com'</span><br><span class="line">response=requests.get(url)</span><br><span class="line">response.encoding='utf-8'</span><br><span class="line">selector=etree.HTML(response.text)</span><br><span class="line">result=selector.xpath("//div/a")</span><br><span class="line">print(result)</span><br></pre></td></tr></tbody></table></figure></div>
+<p>查找div标签里面所有的a标签<br>运行结果：</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><element a at 0x18823639dc8>, <element a at 0x18823256a88>, <element a at 0x188240aad08>, <element a at 0x188240aacc8>, <element a at 0x188240aabc8>, <element a at 0x188240c84c8>]</element></element></element></element></element></element></span><br></pre></td></tr></tbody></table></figure></div>
+<h3 id="查找父节点"><a href="#查找父节点" class="headerlink" title="查找父节点"></a>查找父节点</h3><p>知道了子节点，也可以用 <strong>..</strong> 或者 <strong>parent::*</strong> 查找其父节点</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from lxml import etree</span><br><span class="line">url='https://www.baidu.com'</span><br><span class="line">response=requests.get(url)</span><br><span class="line">response.encoding='utf-8'</span><br><span class="line">selector=etree.HTML(response.text)</span><br><span class="line">result=selector.xpath("//a/..") #result=selector.xpath("//a/parent::*")</span><br><span class="line">print(result)</span><br></pre></td></tr></tbody></table></figure></div>
+<p>运行结果(与查找子节点互相验证)：        </p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<element div at 0x191cf8c9e88>, <element noscript at 0x191cf8c9e48>, <element p at 0x191cf8c9dc8>, <element p at 0x191cf8c9cc8>]</element></element></element></element></span><br></pre></td></tr></tbody></table></figure></div>
+<h3 id="属性匹配"><a href="#属性匹配" class="headerlink" title="属性匹配"></a>属性匹配</h3><p>有时候 HTML 包含多个相同名的节点，而节点的属性是不一样的，此时可以用@符号进行属性过滤</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from lxml import etree</span><br><span class="line">url='https://www.baidu.com'</span><br><span class="line">response=requests.get(url)</span><br><span class="line">response.encoding='utf-8'</span><br><span class="line">selector=etree.HTML(response.text)</span><br><span class="line">result=selector.xpath('//a[@class="mnav"]')</span><br><span class="line">print(result)</span><br></pre></td></tr></tbody></table></figure></div>
+<p>匹配a标签中class=”mnav”的元素<br>运行结果:       </p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<element a at 0x27a43bcae08>, <element a at 0x27a43bcad88>, <element a at 0x27a43bcad48>, <element a at 0x27a43bcac08>, <element a at 0x27a43bcad08>]</element></element></element></element></element></span><br></pre></td></tr></tbody></table></figure></div>
+<h3 id="文本获取"><a href="#文本获取" class="headerlink" title="文本获取"></a>文本获取</h3><p>使用 text() 方法即可提取节点中的文本：</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from lxml import etree</span><br><span class="line">url='https://www.baidu.com'</span><br><span class="line">response=requests.get(url)</span><br><span class="line">response.encoding='utf-8'</span><br><span class="line">selector=etree.HTML(response.text)</span><br><span class="line">result=selector.xpath('//a[@class="mnav"]/text()')</span><br><span class="line">print(result)</span><br></pre></td></tr></tbody></table></figure></div>
+<p>获得所有a标签中class=”mnav”元素的文本<br>运行结果：</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">['新闻', 'hao123', '地图', '视频', '贴吧']</span><br></pre></td></tr></tbody></table></figure></div>
+
+<h3 id="属性获取"><a href="#属性获取" class="headerlink" title="属性获取"></a>属性获取</h3><p>与属性匹配一样，属性获取仍然使用 <strong>@</strong>：</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from lxml import etree</span><br><span class="line">url='https://www.baidu.com'</span><br><span class="line">response=requests.get(url)</span><br><span class="line">response.encoding='utf-8'</span><br><span class="line">selector=etree.HTML(response.text)</span><br><span class="line">result=selector.xpath('//a[@class="mnav"]/@href')</span><br><span class="line">print(result)</span><br></pre></td></tr></tbody></table></figure></div>
+<p>获取标签中的href属性<br>运行结果：</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">['http://news.baidu.com', 'https://www.hao123.com', 'http://map.baidu.com', 'http://v.baidu.com', 'http://tieba.baidu.com']</span><br></pre></td></tr></tbody></table></figure></div>
+<h3 id="一个属性包含多个值的匹配"><a href="#一个属性包含多个值的匹配" class="headerlink" title="一个属性包含多个值的匹配"></a>一个属性包含多个值的匹配</h3><p>某个节点的某个属性可能有多个值，例如：</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><li class="li li-first"><a href="link.html">first item</a></li></span><br></pre></td></tr></tbody></table></figure></div>
+<p>li 节点的 class 属性有 li 和 li-first 两个值，如果使用 html.xpath(‘//li[@class=”li”] 语句，将无法成功匹配，这时就需要使用 contains 方法了，第一个参数传入属性名称，第二个参数传入属性值，只要此属性包含所传入的属性值，就可以完成匹配了    简单举例：     </p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">result=selector.xpath('//li[contains(@class, "li")]/a/text()')</span><br><span class="line">print(result)</span><br></pre></td></tr></tbody></table></figure></div>
+<p>输出结果：        </p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">first item</span><br></pre></td></tr></tbody></table></figure></div>
+<h3 id="多个属性匹配一个值"><a href="#多个属性匹配一个值" class="headerlink" title="多个属性匹配一个值"></a>多个属性匹配一个值</h3><p>XPath 还可以根据多个属性来确定一个节点，这时就需要同时匹配多个属性。此时可以使用运算符 and 来连接：</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from lxml import etree</span><br><span class="line">text = '''  </span><br><span class="line"><div class="haha" name="emmm"><a href="link.html">哈哈</a></div></span><br><span class="line">'''</span><br><span class="line">html = etree.HTML(text)</span><br><span class="line">result = html.xpath('//div[@class="haha" and @name="emmm"]/a/text()')</span><br><span class="line">print(result)</span><br></pre></td></tr></tbody></table></figure></div>
+
+<p>示例中运用了运算符and来连接，此外常见的运算符如下： </p>
+<table>
+<thead>
+<tr>
+<th align="center">运算符</th>
+<th align="center">描述</th>
+<th align="center">实例</th>
+<th align="center">返回值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">一竖</td>
+<td align="center">计算两个节点集</td>
+<td align="center">//book 一竖 //cd</td>
+<td align="center">返回所有拥有 book 和 cd 元素的节点集</td>
+</tr>
+<tr>
+<td align="center">or</td>
+<td align="center">或</td>
+<td align="center">age=19 or age=20</td>
+<td align="center">如果 age 是 19 或者 20，则返回 true。如果 age 是其他值，则返回 false</td>
+</tr>
+<tr>
+<td align="center">and</td>
+<td align="center">与</td>
+<td align="center">age>19 and age<21</td>
+<td align="center">如果 age 大于 19 且小于 21，则返回 true。如果 age 是其他值，则返回 false</td>
+</tr>
+</tbody></table>
+<h3 id="按顺序选择节点"><a href="#按顺序选择节点" class="headerlink" title="按顺序选择节点"></a>按顺序选择节点</h3><p>某些属性可能同时匹配了多个节点，如果要选择其中几个节点，可以利用中括号传入索引的方法获取特定次序的节点</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">from lxml import etree</span><br><span class="line">text = '''  </span><br><span class="line"><div><br><span class="line">    <a href="http://news.baidu.com" target="_blank" class="mnav">新闻</a></span><br><span class="line">    <a href="https://www.hao123.com" target="_blank" class="mnav">hao123</a></span><br><span class="line">    <a href="http://map.baidu.com" target="_blank" class="mnav">地图</a><a href="https://haokan.baidu.com/?sfrom=baidu-top" target="_blank" class="mnav">视频</a></span><br><span class="line">    <a href="http://tieba.baidu.com" target="_blank" class="mnav">贴吧</a><a href="http://xueshu.baidu.com" target="_blank" class="mnav">学术</a></span><br><span class="line"><div><br><span class="line">'''</span><br><span class="line">html = etree.HTML(text)</span><br><span class="line">result = html.xpath('//div/a[1]/text()')</span><br><span class="line">print(result)</span><br><span class="line">result = html.xpath('//div/a[last()]/text()')</span><br><span class="line">print(result)</span><br><span class="line">result = html.xpath('//div/a[position()<3]/text()')</span><br><span class="line">print(result)</span><br><span class="line">result = html.xpath('//div/a[last()-1]/text()')</span><br><span class="line">print(result)</span><br></div></span></div></span></pre></td></tr></tbody></table></figure></div>
+<ul>
+<li>a[1]：选取第一个a节点；</li>
+<li>a[last()]：选取最后一个a节点；</li>
+<li>a[position()<3]：选取位置小于3的a节点；</li>
+<li>a[last()-1]：选取倒数第二个a节点</li>
+</ul>
+<p>运行结果：       </p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">['新闻']</span><br><span class="line">['学术']</span><br><span class="line">['新闻', 'hao123']</span><br><span class="line">['贴吧']</span><br></pre></td></tr></tbody></table></figure></div>
+<h3 id="节点轴选择"><a href="#节点轴选择" class="headerlink" title="节点轴选择"></a>节点轴选择</h3><p>节点轴选择：获取子元素、兄弟元素、父元素、祖先元素等</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">from lxml import etree</span><br><span class="line">text = '''  </span><br><span class="line"><div><br><span class="line">    <ul><br><span class="line">        <a href="http://news.baidu.com" target="_blank" class="mnav">新闻</a></span><br><span class="line">        <a href="https://www.hao123.com" target="_blank" class="mnav">hao123</a></span><br><span class="line">        <a href="http://map.baidu.com" target="_blank" class="mnav">地图</a><a href="https://haokan.baidu.com/?sfrom=baidu-top" target="_blank" class="mnav">视频</a></span><br><span class="line">        <a href="http://tieba.baidu.com" target="_blank" class="mnav">贴吧</a><a href="http://xueshu.baidu.com" target="_blank" class="mnav">学术</a></span><br><span class="line">    <ul><br><span class="line"><div><br><span class="line">'''</span><br><span class="line">html = etree.HTML(text)</span><br><span class="line">result = html.xpath('//a[1]/ancestor::*')</span><br><span class="line">print(result)</span><br><span class="line">result = html.xpath('//a[1]/ancestor::div')</span><br><span class="line">print(result)</span><br><span class="line">result = html.xpath('//a[1]/attribute::*')</span><br><span class="line">print(result)</span><br></div></span></ul></span></ul></span></div></span></pre></td></tr></tbody></table></figure></div>
+<p>运行结果：</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[<element html at 0x1eba74af848>, <element body at 0x1eba736b2c8>, <element div at 0x1eba74af7c8>, <element ul at 0x1eba74af788>]</element></element></element></element></span><br><span class="line">[<element div at 0x1eba74af7c8>]</element></span><br><span class="line">['http://news.baidu.com', '_blank', 'mnav']</span><br></pre></td></tr></tbody></table></figure></div>
+<p><strong>基本语法：轴名称::节点测试[谓语]</strong></p>
+<p>轴名称对应的结果：</p>
+<table>
+<thead>
+<tr>
+<th align="center">轴名称</th>
+<th align="center">结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ancestor</td>
+<td align="center">选取当前节点的所有先辈（父、祖父等）</td>
+</tr>
+<tr>
+<td align="center">ancestor-or-self</td>
+<td align="center">选取当前节点的所有先辈（父、祖父等）以及当前节点本身</td>
+</tr>
+<tr>
+<td align="center">attribute</td>
+<td align="center">选取当前节点的所有属性</td>
+</tr>
+<tr>
+<td align="center">child</td>
+<td align="center">选取当前节点的所有子元素</td>
+</tr>
+<tr>
+<td align="center">descendant</td>
+<td align="center">选取当前节点的所有后代元素（子、孙等）</td>
+</tr>
+<tr>
+<td align="center">descendant-or-self</td>
+<td align="center">选取当前节点的所有后代元素（子、孙等）以及当前节点本身</td>
+</tr>
+<tr>
+<td align="center">following</td>
+<td align="center">选取文档中当前节点的结束标签之后的所有节点</td>
+</tr>
+<tr>
+<td align="center">namespace</td>
+<td align="center">选取当前节点的所有命名空间节点</td>
+</tr>
+<tr>
+<td align="center">parent</td>
+<td align="center">选取当前节点的父节点</td>
+</tr>
+<tr>
+<td align="center">preceding</td>
+<td align="center">选取文档中当前节点的开始标签之前的所有节点</td>
+</tr>
+<tr>
+<td align="center">preceding-sibling</td>
+<td align="center">选取当前节点之前的所有同级节点</td>
+</tr>
+<tr>
+<td align="center">self</td>
+<td align="center">选取当前节点</td>
+</tr>
+<tr>
+<td align="center">举例如下：</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center">实例</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">child::a</td>
+<td align="center">选取所有属于当前节点的子元素的a节点</td>
+</tr>
+<tr>
+<td align="center">attribute::class</td>
+<td align="center">选取当前节点的class属性</td>
+</tr>
+<tr>
+<td align="center">child::*</td>
+<td align="center">选取当前节点的所有子元素</td>
+</tr>
+<tr>
+<td align="center">attribute::*</td>
+<td align="center">选取当前节点的所有属性</td>
+</tr>
+<tr>
+<td align="center">child::text()</td>
+<td align="center">选取当前节点的所有文本子节点</td>
+</tr>
+<tr>
+<td align="center">child::node()</td>
+<td align="center">选取当前节点的所有子节点</td>
+</tr>
+<tr>
+<td align="center">descendant::a</td>
+<td align="center">选取当前节点的所有a后代</td>
+</tr>
+<tr>
+<td align="center">ancestor::a</td>
+<td align="center">选择当前节点的所有a先辈</td>
+</tr>
+<tr>
+<td align="center">ancestor-or-self::a</td>
+<td align="center">选取当前节点的所有a先辈以及当前节点（如果此节点是a节点）</td>
+</tr>
+<tr>
+<td align="center">child::*/child::price</td>
+<td align="center">选取当前节点的所有 price 孙节点</td>
+</tr>
+</tbody></table>
+</body></html></div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">G-G-Bond</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://jjb-coder.club/2020/03/22/%E8%A7%A3%E6%9E%90%E5%BA%93-lxml/">https://jjb-coder.club/2020/03/22/%E8%A7%A3%E6%9E%90%E5%BA%93-lxml/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/default.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> Donate<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="/jjb-coder.github.io/img/wechat.jpg" alt="微信"><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="/jjb-coder.github.io/img/alipay.jpg" alt="支付寶"><div class="post-qr-code__desc">支付寶</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="next-post pull-full"><a href="/jjb-coder.github.io/2020/03/12/%E5%88%97%E8%A1%A8/"><img class="next_cover lazyload" data-src="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/default.png" onerror="onerror=null;src='/img/404.jpg'"><div class="label">Next Post</div><div class="next_info"><span>列表</span></div></a></div></nav></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By G-G-Bond</div><div class="framework-info"><span>Driven </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div><center>
+<font color="white">本网站已运行:</font><span id="run_time" style="color: white;"></span>
+</center>
+   <script>
+   function runTime() {
+   var d = new Date(), str = ''; 
+   BirthDay = new Date("2020-2-21");
+   today = new Date();
+   timeold = (today.getTime() - BirthDay.getTime());
+   sectimeold = timeold / 1000
+   secondsold = Math.floor(sectimeold);
+   msPerDay = 24 * 60 * 60 * 1000
+   msPerYear = 365 * 24 * 60 * 60 * 1000
+   e_daysold = timeold / msPerDay
+   e_yearsold = timeold / msPerYear
+   daysold = Math.floor(e_daysold);
+   yearsold = Math.floor(e_yearsold);
+   //str = yearsold + "年";
+   str += daysold + "天";
+   str += d.getHours() + '时';
+   str += d.getMinutes() + '分';
+   str += d.getSeconds() + '秒';
+   return str;
+   }
+   setInterval(function () {
+     $('#run_time').html(runTime())
+   }, 1000);
+   </script></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="Read Mode"></i><i class="fa fa-plus" id="font_plus" title="Increase font size"></i><i class="fa fa-minus" id="font_minus" title="Decrease font size"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="Traditional Chinese and Simplified Chinese Conversion" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="Dark Mode"></i></div><div id="rightside-config-show"><div id="rightside_config" title="Setting"><i class="fa fa-cog" aria-hidden="true"></i></div><i class="fa fa-list-ul close" id="mobile-toc-button" title="Table of Contents" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="Back to top" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/jjb-coder.github.io/js/utils.js"></script><script src="/jjb-coder.github.io/js/main.js"></script><script src="/jjb-coder.github.io/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/js/click_heart.js"></script></body></html>
