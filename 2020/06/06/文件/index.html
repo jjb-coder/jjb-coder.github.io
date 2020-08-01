@@ -1,0 +1,177 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"><title>文件 | 酒中仙</title><meta name="description" content="文件"><meta name="author" content="G-G-Bond"><meta name="copyright" content="G-G-Bond"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/jjb-coder.github.io/img/favicon.ico"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="文件"><meta name="twitter:description" content="文件"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/default.png"><meta property="og:type" content="article"><meta property="og:title" content="文件"><meta property="og:url" content="https://jjb-coder.club/2020/06/06/%E6%96%87%E4%BB%B6/"><meta property="og:site_name" content="酒中仙"><meta property="og:description" content="文件"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/default.png"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = 'false'
+var t = Cookies.get("theme");
+if (autoChangeMode == '1'){
+const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+if (t === undefined){
+  if (isLightMode) activateLightMode()
+  else if (isDarkMode) activateDarkMode()
+  else if (isNotSpecified || hasNoSupport){
+    console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+    now = new Date();
+    hour = now.getHours();
+    isNight = hour < 6 || hour >= 18
+    isNight ? activateDarkMode() : activateLightMode()
+}
+} else if (t == 'light') activateLightMode()
+else activateDarkMode()
+
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/jjb-coder.github.io/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="https://jjb-coder.club/2020/06/06/%E6%96%87%E4%BB%B6/"><link rel="prev" title="数学建模之遗传算法(含matlab代码)" href="https://jjb-coder.club/2020/08/01/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E4%B9%8B%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95-%E5%90%ABmatlab%E4%BB%A3%E7%A0%81/"><link rel="next" title="函数" href="https://jjb-coder.club/2020/06/04/%E5%87%BD%E6%95%B0/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/jjb-coder.github.io/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://jjb-coder.github.io/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  bookmark: {
+    title: 'Snackbar.bookmark.title',
+    message_prev: 'Press',
+    message_next: 'to bookmark this page'
+  },
+  runtime_unit: 'days',
+  runtime: false,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  isHome: false,
+  isPost: true
+  
+}</script><meta name="generator" content="Hexo 4.2.0"></head><body><header> <div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/jjb-coder.github.io/">酒中仙</a></span><span class="toggle-menu pull_right close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/jjb-coder.github.io/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/jjb-coder.github.io/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/jjb-coder.github.io/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/jjb-coder.github.io/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 闲暇</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/jjb-coder.github.io/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/jjb-coder.github.io/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/jjb-coder.github.io/books/"><i class="fa-fw fa fa-book"></i><span> 阅读</span></a></li><li><a class="site-page" href="/jjb-coder.github.io/photos/"><i class="fa-fw fa fa-photo"></i><span> 图片</span></a></li></ul></div></div></span></div></header><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/jjb-coder.github.io/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/jjb-coder.github.io/archives/"><div class="headline">Articles</div><div class="length_num">23</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/jjb-coder.github.io/categories/"><div class="headline">Categories</div><div class="length_num">9</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/jjb-coder.github.io/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/jjb-coder.github.io/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/jjb-coder.github.io/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/jjb-coder.github.io/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 闲暇</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/jjb-coder.github.io/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/jjb-coder.github.io/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/jjb-coder.github.io/books/"><i class="fa-fw fa fa-book"></i><span> 阅读</span></a></li><li><a class="site-page" href="/jjb-coder.github.io/photos/"><i class="fa-fw fa fa-photo"></i><span> 图片</span></a></li></ul></div></div></div><div id="mobile-sidebar-toc"><div class="toc_mobile_headline">Catalog</div><div class="sidebar-toc__content"><ol class="toc_mobile_items"><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#基本操作"><span class="toc_mobile_items-number">1.</span> <span class="toc_mobile_items-text">基本操作</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#open函数"><span class="toc_mobile_items-number">1.1.</span> <span class="toc_mobile_items-text">open函数</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#write函数"><span class="toc_mobile_items-number">1.2.</span> <span class="toc_mobile_items-text">write函数</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#read函数"><span class="toc_mobile_items-number">1.3.</span> <span class="toc_mobile_items-text">read函数</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#readlines函数"><span class="toc_mobile_items-number">1.4.</span> <span class="toc_mobile_items-text">readlines函数</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#seek函数"><span class="toc_mobile_items-number">1.5.</span> <span class="toc_mobile_items-text">seek函数</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#文件和文件夹-OS模块"><span class="toc_mobile_items-number">2.</span> <span class="toc_mobile_items-text">文件和文件夹(OS模块)</span></a></li></ol></div></div></div><div id="body-wrap"><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true">     </i><div class="auto_open" id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本操作"><span class="toc-number">1.</span> <span class="toc-text">基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#open函数"><span class="toc-number">1.1.</span> <span class="toc-text">open函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#write函数"><span class="toc-number">1.2.</span> <span class="toc-text">write函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#read函数"><span class="toc-number">1.3.</span> <span class="toc-text">read函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#readlines函数"><span class="toc-number">1.4.</span> <span class="toc-text">readlines函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#seek函数"><span class="toc-number">1.5.</span> <span class="toc-text">seek函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件和文件夹-OS模块"><span class="toc-number">2.</span> <span class="toc-text">文件和文件夹(OS模块)</span></a></li></ol></div></div></div><main id="content-outer"><div id="top-container" style="background-image: url(https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/default.png)"><div id="post-info"><div id="post-title"><div class="posttitle">文件</div></div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> Created 2020-06-06<span class="post-meta__separator">|</span><i class="fa fa-history fa-fw" aria-hidden="true"></i> Updated 2020-06-06</time><span class="post-meta__separator">|</span><span><i class="fa fa-inbox post-meta__icon fa-fw" aria-hidden="true"></i><a class="post-meta__categories" href="/jjb-coder.github.io/categories/python/">python</a><i class="fa fa-angle-right fa-fw" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon fa-fw" aria-hidden="true"></i><a class="post-meta__categories" href="/jjb-coder.github.io/categories/python/python%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B0/">python基础知识笔记</a></span><div class="post-meta-wordcount"><div class="post-meta-pv-cv"><span><i class="fa fa-eye post-meta__icon fa-fw" aria-hidden="true"> </i>Post View:</span><span id="busuanzi_value_page_pv"></span></div></div></div></div></div><div class="layout layout_post" id="content-inner">   <article id="post"><div class="article-container" id="post-content"><html><head></head><body><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><h3 id="open函数"><a href="#open函数" class="headerlink" title="open函数"></a>open函数</h3><p>作用：打开一个文件，创建一个文件对象，相关的方法才可以调用它进行读写        </p>
+<ul>
+<li>基本格式：open(name,mode)<br>name:要打开的目标文件名的字符串<br>mode:设置打开文件的模式(访问模式),只读、写入、追加等</li>
+</ul>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">python</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f=open(f=open(<span class="string">"薛之谦 - 木偶人.mp3"</span>,<span class="string">'r'</span>))</span><br></pre></td></tr></tbody></table></figure></div>
+<h3 id="write函数"><a href="#write函数" class="headerlink" title="write函数"></a>write函数</h3><p>作用:将内容写入文件</p>
+<ul>
+<li>基本格式:文件对象.write(字符串)</li>
+</ul>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">python</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f=open(<span class="string">"jjb.txt"</span>,<span class="string">'w'</span>)</span><br><span class="line">f.write(<span class="string">'jjb is dashing!'</span>)</span><br><span class="line">f.close()</span><br></pre></td></tr></tbody></table></figure></div>
+
+<blockquote>
+<p>f.close()用来关闭文件</p>
+</blockquote>
+<p>含一下关键字的访问模式解释：</p>
+<ul>
+<li>r:如果文件不存在则报错,不支持写入</li>
+<li>w:写入，会覆盖之前所有内容,不存在文件则新建文件</li>
+<li>a:在原内容上追加新内容,不存在则新建文件</li>
+<li>b:二进制格式</li>
+</ul>
+<h3 id="read函数"><a href="#read函数" class="headerlink" title="read函数"></a>read函数</h3><p>作用：读取对应长度的字符串</p>
+<ul>
+<li>基本格式:文件对象.read(num)<br>num表示要从文件中读取的数据的长度(单位是字节),如果没有传入num,那么就表示读取文件中所有数据(包括换行符)</li>
+</ul>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">python</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">f=open(<span class="string">"jjb.txt"</span>,<span class="string">'r'</span>)</span><br><span class="line">print(f.read(<span class="number">3</span>))</span><br><span class="line">f.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出结果：</span></span><br><span class="line"><span class="comment"># jjb</span></span><br></pre></td></tr></tbody></table></figure></div>
+
+<h3 id="readlines函数"><a href="#readlines函数" class="headerlink" title="readlines函数"></a>readlines函数</h3><p>作用:可以按照行的方式把整个文件中的内容一次性进行读取，并且返回的是一个列表,其中每一行数据为一个元素</p>
+<ul>
+<li>基本格式：文件对象.readlines()</li>
+</ul>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">python</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">f=open(<span class="string">"jjb.txt"</span>,<span class="string">'r'</span>)</span><br><span class="line">print(f.readlines())</span><br><span class="line">f.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出结果：</span></span><br><span class="line"><span class="comment"># ['jjb 20\n', 'kitty 18']</span></span><br></pre></td></tr></tbody></table></figure></div>
+<blockquote>
+<p>readline()函数和它功能有点相似,一次读取一整行,文件光标移到该行末尾</p>
+</blockquote>
+<h3 id="seek函数"><a href="#seek函数" class="headerlink" title="seek函数"></a>seek函数</h3><p>作用：用来移动文件指针</p>
+<ul>
+<li>基本格式:文件对象.seek(偏移量,起始位置)<br>起始位置：0：文件开头  1：当前位置  2：文件末尾</li>
+</ul>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">python</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">f=open(<span class="string">"jjb.txt"</span>,<span class="string">'r'</span>)</span><br><span class="line">f.seek(<span class="number">2</span>,<span class="number">0</span>)</span><br><span class="line">print(f.read(<span class="number">1</span>))</span><br><span class="line">f.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出结果：</span></span><br><span class="line"><span class="comment"># b</span></span><br></pre></td></tr></tbody></table></figure></div>
+
+<h2 id="文件和文件夹-OS模块"><a href="#文件和文件夹-OS模块" class="headerlink" title="文件和文件夹(OS模块)"></a>文件和文件夹(OS模块)</h2><p>只是些函数，直接以表格形式列出来(使用时记得 import os)   </p>
+<table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">os.rename(路径,新名字)</td>
+<td align="center">重命名文件或文件夹</td>
+</tr>
+<tr>
+<td align="center">os.remove(文件路径)</td>
+<td align="center">删除文件</td>
+</tr>
+<tr>
+<td align="center">os.mkdir(文件夹路径)</td>
+<td align="center">创建文件夹(不写路径，直接写文件夹名，就这当前目录创建文件夹)</td>
+</tr>
+<tr>
+<td align="center">os.rmdir(文件夹路径)</td>
+<td align="center">删除文件夹</td>
+</tr>
+<tr>
+<td align="center">os.getcwd()</td>
+<td align="center">获取当前目录</td>
+</tr>
+<tr>
+<td align="center">os.chdir(路径)</td>
+<td align="center">改变当前目录到指定路径</td>
+</tr>
+<tr>
+<td align="center">os.listdir(路径)</td>
+<td align="center">获取目录列表(返回一个列表,列表元素为每个文件名)</td>
+</tr>
+</tbody></table>
+</body></html></div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">G-G-Bond</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://jjb-coder.club/2020/06/06/%E6%96%87%E4%BB%B6/">https://jjb-coder.club/2020/06/06/%E6%96%87%E4%BB%B6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/default.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> Donate<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="/jjb-coder.github.io/img/wechat.jpg" alt="微信"><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="/jjb-coder.github.io/img/alipay.jpg" alt="支付寶"><div class="post-qr-code__desc">支付寶</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/jjb-coder.github.io/2020/08/01/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E4%B9%8B%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95-%E5%90%ABmatlab%E4%BB%A3%E7%A0%81/"><img class="prev_cover lazyload" data-src="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/default.png" onerror="onerror=null;src='/img/404.jpg'"><div class="label">Previous Post</div><div class="prev_info"><span>数学建模之遗传算法(含matlab代码)</span></div></a></div><div class="next-post pull_right"><a href="/jjb-coder.github.io/2020/06/04/%E5%87%BD%E6%95%B0/"><img class="next_cover lazyload" data-src="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/default.png" onerror="onerror=null;src='/img/404.jpg'"><div class="label">Next Post</div><div class="next_info"><span>函数</span></div></a></div></nav></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By G-G-Bond</div><div class="framework-info"><span>Driven </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div><center>
+<font color="white">本网站已运行:</font><span id="run_time" style="color: white;"></span>
+</center>
+   <script>
+   function runTime() {
+   var d = new Date(), str = ''; 
+   BirthDay = new Date("2020-2-21");
+   today = new Date();
+   timeold = (today.getTime() - BirthDay.getTime());
+   sectimeold = timeold / 1000
+   secondsold = Math.floor(sectimeold);
+   msPerDay = 24 * 60 * 60 * 1000
+   msPerYear = 365 * 24 * 60 * 60 * 1000
+   e_daysold = timeold / msPerDay
+   e_yearsold = timeold / msPerYear
+   daysold = Math.floor(e_daysold);
+   yearsold = Math.floor(e_yearsold);
+   //str = yearsold + "年";
+   str += daysold + "天";
+   str += d.getHours() + '时';
+   str += d.getMinutes() + '分';
+   str += d.getSeconds() + '秒';
+   return str;
+   }
+   setInterval(function () {
+     $('#run_time').html(runTime())
+   }, 1000);
+   </script></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="Read Mode"></i><i class="fa fa-plus" id="font_plus" title="Increase font size"></i><i class="fa fa-minus" id="font_minus" title="Decrease font size"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="Traditional Chinese and Simplified Chinese Conversion" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="Dark Mode"></i></div><div id="rightside-config-show"><div id="rightside_config" title="Setting"><i class="fa fa-cog" aria-hidden="true"></i></div><i class="fa fa-list-ul close" id="mobile-toc-button" title="Table of Contents" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="Back to top" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/jjb-coder.github.io/js/utils.js"></script><script src="/jjb-coder.github.io/js/main.js"></script><script src="/jjb-coder.github.io/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/js/click_heart.js"></script></body></html>
